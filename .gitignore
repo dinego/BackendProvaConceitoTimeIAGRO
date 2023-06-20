@@ -1,0 +1,62 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+
+# Build results
+/bin/
+/obj/
+
+# .NET Core
+/.dotnet/
+/global.json
+/nuget.exe
+/nuget.targets
+/*.nuget.props
+/*.nuget.targets
+/*.user
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.suo
+*.userprefs
+*.usertasks
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.sdf
+*.opensdf
+*.suo
+*.sln.docstates
+*.bak
+*.cache
+*.csproj.user
+*.user
+*.log
+*.dll
+*.opendb
+*.myapp
+*.exe
+/.vs/
+.vs/
+
+# Test Results
+/TestResults/
+
+# Resharper
+_ReSharper*/
+*.ReSharper*/
+*.DotSettings.user
+
+# Build Results of an ATL Project
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
