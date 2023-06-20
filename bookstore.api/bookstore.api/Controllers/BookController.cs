@@ -1,12 +1,9 @@
-﻿using Common;
-using Domain.DTO.Request;
+﻿using Bookstore.Application.Interfaces.Book;
 using Domain.DTO.Requests;
 using Domain.DTO.Responses;
-using Domain.Entities;
 using Domain.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Interfaces;
 using System.Collections.Generic;
 
 namespace bookstore.api.Controllers
@@ -15,10 +12,10 @@ namespace bookstore.api.Controllers
     [Route("api/[controller]/[action]")]
     public class BookController : ControllerBase
     {
-        private readonly IBookService _bookService;
-        public BookController(IBookService bookService)
+        private readonly IBookAppService _bookAppService;
+        public BookController(IBookAppService bookAppService)
         {
-            _bookService = bookService;
+            _bookAppService = bookAppService;
         }
 
         /// <summary>
@@ -27,7 +24,7 @@ namespace bookstore.api.Controllers
         [HttpGet]
         public IEnumerable<BookResponseDTO> GetAllBooks()
         {
-            return _bookService.GetAll();
+            return _bookAppService.GetAll();
         }
 
         /// <summary>
@@ -37,7 +34,7 @@ namespace bookstore.api.Controllers
         [HttpGet("{id}")]
         public BookResponseDTO GetById(int id)
         {
-            return _bookService.GetById(id);
+            return _bookAppService.GetById(id);
         }
 
         /// <summary>
@@ -47,7 +44,7 @@ namespace bookstore.api.Controllers
         [HttpGet]
         public IEnumerable<BookResponseDTO> SortByPrice(EOrdination ordination)
         {
-            return _bookService.SortByPrice(ordination);
+            return _bookAppService.SortByPrice(ordination);
         }
 
         /// <summary>
@@ -57,7 +54,7 @@ namespace bookstore.api.Controllers
         [HttpGet]
         public IEnumerable<BookResponseDTO> GetBySpecifications([FromQuery] BookRequestSpecificationsDTO specifications)
         {
-            return _bookService.GetBySpecifications(specifications);
+            return _bookAppService.GetBySpecifications(specifications);
         }
 
         /// <summary>
@@ -67,7 +64,7 @@ namespace bookstore.api.Controllers
         [HttpGet]
         public IEnumerable<BookResponseDTO> GetBySpecification(string genericSpecification)
         {
-            return _bookService.GetBySpecification(genericSpecification);
+            return _bookAppService.GetBySpecification(genericSpecification);
         }
     }
 }

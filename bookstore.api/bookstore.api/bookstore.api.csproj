@@ -12,8 +12,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Infra\Infra.csproj" />
-	  <ProjectReference Include="..\Service\Service.csproj" />
+	  <ProjectReference Include="..\Bookstore.Application\Bookstore.Application.csproj" />
+	  <ProjectReference Include="..\Infra\Bookstore.Infra.csproj" />
 	</ItemGroup>
 
 </Project>

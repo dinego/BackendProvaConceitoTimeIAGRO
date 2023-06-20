@@ -1,4 +1,8 @@
 ﻿using bookstore.api.Middleware;
+using Bookstore.Application.AppServices;
+using Bookstore.Application.AppServices.Book;
+using Bookstore.Application.Interfaces.Book;
+using Bookstore.Application.Interfaces.Shipping;
 using Infra.Interfaces;
 using Infra.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +42,11 @@ namespace bookstore.api
             services.AddMvcCore()
                 .AddApiExplorer();
 
+            // AppServices
+            services.AddTransient<IBookAppService, BookAppService>();
+            services.AddTransient<IShippingAppService, ShippingAppService>();
+
+            // Services
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IShippingService, ShippingService>();

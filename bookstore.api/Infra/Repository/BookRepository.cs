@@ -1,6 +1,4 @@
-﻿using Common;
-using Domain.DTO.Request;
-using Domain.DTO.Requests;
+﻿using Domain.DTO.Requests;
 using Domain.DTO.Responses;
 using Domain.Enum;
 using Infra.Interfaces;
