@@ -1,6 +1,8 @@
-﻿using Domain.DTO.Request;
+﻿using Common;
+using Domain.DTO.Request;
 using Domain.DTO.Requests;
 using Domain.DTO.Responses;
+using Domain.Entities;
 using Domain.Enum;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,39 +35,39 @@ namespace bookstore.api.Controllers
         /// <param name="id">Id do Livro</param>
         /// </summary>
         [HttpGet("{id}")]
-        public BookResponseDTO GetById([FromQuery] int id)
+        public BookResponseDTO GetById(int id)
         {
             return _bookService.GetById(id);
         }
 
         /// <summary>
         /// Ordena a lista de Livros baseado em no DTO passado
-        /// <param name="request">ASC ou DESC</param>
+        /// <param name="ordination">ASC = 1 ou DESC = 2</param>
         /// </summary>
-        [HttpGet("{request}")]
-        public IEnumerable<BookResponseDTO> SortByPrice([FromQuery] EOrdination request)
+        [HttpGet("{ordinatio}")]
+        public IEnumerable<BookResponseDTO> SortByPrice(EOrdination ordination)
         {
-            return _bookService.SortByPrice(request);
+            return _bookService.SortByPrice(ordination);
         }
 
         /// <summary>
         /// Busca uma lista de livros baseado nas especificações passadas pela request
-        /// <param name="request">Propriedades da especificação para busca</param>
+        /// <param name="specifications">Propriedades da especificação para busca</param>
         /// </summary>
         [HttpGet]
-        public IEnumerable<BookResponseDTO> GetBySpecifications([FromQuery] BookRequestSpecificationsDTO request)
+        public IEnumerable<BookResponseDTO> GetBySpecifications([FromQuery] BookRequestSpecificationsDTO specifications)
         {
-            return _bookService.GetBySpecifications(request);
+            return _bookService.GetBySpecifications(specifications);
         }
 
         /// <summary>
         /// Busca uma lista de livros baseado na única específicação genérica passada pela request
-        /// <param name="request">Única especificação genérica</param>
+        /// <param name="genericSpecification">Única especificação genérica</param>
         /// </summary>
-        [HttpGet("{request}")]
-        public IEnumerable<BookResponseDTO> GetBySpecification(string request)
+        [HttpGet("{genericSpecification}")]
+        public IEnumerable<BookResponseDTO> GetBySpecification(string genericSpecification)
         {
-            return _bookService.GetBySpecification(request);
+            return _bookService.GetBySpecification(genericSpecification);
         }
     }
 }

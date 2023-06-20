@@ -1,4 +1,5 @@
-﻿using Infra.Interfaces;
+﻿using bookstore.api.Middleware;
+using Infra.Interfaces;
 using Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,10 +7,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Converters;
 using Service.Interfaces;
-using Service.Services;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using Service.Interfaces.Shipping;
+using Service.Interfaces.Shipping.Strategy;
+using Service.Services.Book;
+using Service.Services.Shipping;
+using Service.Services.Shipping.Strategy;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace bookstore.api
 {
@@ -28,7 +32,7 @@ namespace bookstore.api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bookstore.API", Version = "v1" });
-                c.EnableAnnotations();
+                c.DocumentFilter<SwaggerSummaryDocumentFilter>();
             });
 
             services.AddMvcCore()
@@ -36,6 +40,9 @@ namespace bookstore.api
 
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IShippingService, ShippingService>();
+            services.AddTransient<IShippingStrategy, ShippingNormalStrategy>();
+            services.AddTransient<IShippingStrategy, ShippingExpressStrategy>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,10 +60,14 @@ namespace bookstore.api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API Name v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Nome do Seu API V1");
+                c.DocExpansion(DocExpansion.List);
             });
 
             // Outras configurações de middleware...
+
+            // ativando o middleware de error
+            app.UseMiddleware(typeof(ErrorMiddleware));
 
             app.UseRouting();
 

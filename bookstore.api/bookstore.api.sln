@@ -17,9 +17,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FEB453E5-629C-4860-AD0C-2764503D500A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{0DAF79A8-DA90-4057-BE68-E2D9B40E8DC3}"
-	ProjectSection(SolutionItems) = preProject
-		..\books.json = ..\books.json
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{1C2B1F2E-5689-4551-91B1-D5875804836D}"
 EndProject
@@ -36,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{6F094279-1EE3-4B94-9E0F-B27C4DA20B33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{8D4A3FEB-2BE4-4374-B254-1A2DD4C7F395}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{8D4A3FEB-2BE4-4374-B254-1A2DD4C7F395}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

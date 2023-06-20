@@ -1,8 +1,10 @@
-﻿using Domain.Entities;
-
-namespace Domain.DTO.Responses
+﻿namespace Domain.DTO.Responses
 {
-    public class BookResponseDTO : Book
+    public class BookResponseDTO
     {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public decimal Price { get; set; }
+        public SpecificationsDTO? Specifications { get; set; }
     }
 }

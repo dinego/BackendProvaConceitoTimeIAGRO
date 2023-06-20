@@ -1,9 +1,4 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.DTO.Requests
+﻿namespace Domain.DTO.Requests
 {
     public class BookRequestSpecificationsDTO
     {
