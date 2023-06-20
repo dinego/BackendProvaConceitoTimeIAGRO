@@ -44,7 +44,7 @@ namespace bookstore.api.Controllers
         /// Ordena a lista de Livros baseado em no DTO passado
         /// <param name="ordination">ASC = 1 ou DESC = 2</param>
         /// </summary>
-        [HttpGet("{ordinatio}")]
+        [HttpGet]
         public IEnumerable<BookResponseDTO> SortByPrice(EOrdination ordination)
         {
             return _bookService.SortByPrice(ordination);
@@ -64,7 +64,7 @@ namespace bookstore.api.Controllers
         /// Busca uma lista de livros baseado na única específicação genérica passada pela request
         /// <param name="genericSpecification">Única especificação genérica</param>
         /// </summary>
-        [HttpGet("{genericSpecification}")]
+        [HttpGet]
         public IEnumerable<BookResponseDTO> GetBySpecification(string genericSpecification)
         {
             return _bookService.GetBySpecification(genericSpecification);

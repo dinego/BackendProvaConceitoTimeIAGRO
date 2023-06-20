@@ -18,7 +18,7 @@ namespace bookstore.api.Tests
             {
                 new BookResponseDTO { 
                     Id = 1, Name = "Book 1", Price = 10m, Specifications = 
-                    new Domain.Entities.Specifications {
+                    new SpecificationsDTO {
                         Author = "Teste",
                         Genres = "Genero",
                         Illustrator = "Ilustrador",
@@ -27,8 +27,8 @@ namespace bookstore.api.Tests
                     } 
                 },
                 new BookResponseDTO {
-                    Id = 2, Name = "Book 2", Price = 12m, Specifications = 
-                    new Domain.Entities.Specifications {
+                    Id = 2, Name = "Book 2", Price = 12m, Specifications =
+                    new SpecificationsDTO {
                         Author = "Teste 2",
                         Genres = "Genero 2",
                         Illustrator = "Ilustrador 2",
@@ -62,7 +62,7 @@ namespace bookstore.api.Tests
                 Name = "Book 1",
                 Price = 10m,
                 Specifications =
-                    new Domain.Entities.Specifications
+                    new SpecificationsDTO
                     {
                         Author = "Teste",
                         Genres = "Genero",

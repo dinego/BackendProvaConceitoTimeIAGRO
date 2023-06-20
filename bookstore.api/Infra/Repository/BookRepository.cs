@@ -45,12 +45,20 @@ namespace Infra.Repository
 
             var dataFiltered = allData.Where(w =>
                 (request.PageCount == null || w.Specifications.PageCount == request.PageCount) &&
-                (request.OriginallyPublished == null || w.Specifications.OriginallyPublished.ToLower().Contains(request.OriginallyPublished.ToLower())) &&
+                (request.OriginallyPublished == null || VerifyOriginalPublished(w.Specifications.OriginallyPublished, request.OriginallyPublished)) &&
                 (request.Author == null || w.Specifications.Author.ToLower().Contains(request.Author.ToLower())) &&
                 (request.Illustrator == null || HasStringInObjectList(request.Illustrator, (JsonElement)w.Specifications.Illustrator)) &&
                 (request.Genres == null || HasStringInObjectList(request.Genres, (JsonElement)w.Specifications.Genres)));
 
             return dataFiltered;
+        }
+
+        private bool VerifyOriginalPublished(string originallyPublished, string request)
+        {
+            if (string.IsNullOrEmpty(originallyPublished))
+                return false;
+            
+            return originallyPublished.ToLower().Contains(request.ToLower());
         }
 
         private bool HasStringInObjectList(string illustrator, JsonElement illustratorsArray)

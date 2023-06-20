@@ -1,6 +1,7 @@
 ﻿using Common;
 using Domain.DTO.Requests;
 using Domain.DTO.Responses;
+using Domain.Entities;
 using Domain.Enum;
 using Infra.Interfaces;
 using Service.Interfaces;
@@ -23,7 +24,11 @@ namespace Service.Services.Book
 
         public BookResponseDTO GetById(int id)
         {
-            return _bookRepository.GetById(id);
+            var book = _bookRepository.GetById(id);
+            if (book == null)
+                throw new CustomException("Livro não encontrado", System.Net.HttpStatusCode.NotFound, "Service.Services.Book", "GetBySpecification");
+
+            return book;
         }
 
         public IEnumerable<BookResponseDTO> GetBySpecification(string specification)
@@ -62,7 +67,7 @@ namespace Service.Services.Book
 
         public IEnumerable<BookResponseDTO> SortByPrice(EOrdination ordination)
         {
-            if (ordination != EOrdination.DESC || ordination != EOrdination.ASC)
+            if (ordination != EOrdination.DESC && ordination != EOrdination.ASC)
                 throw new CustomException("Ordenação incorreta", System.Net.HttpStatusCode.NotFound, "bookstore.api.Controllers", "SortByPrice");
 
             return _bookRepository.SortByPrice(ordination);
