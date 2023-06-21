@@ -1,0 +1,16 @@
+<div class="row mt-4">
+  <div class="mr-3 col-md-3" *ngFor="let item of bookList">
+    <div class="card">
+      <img
+        src="../../../../../assets/images/10415756.jpg"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">Autor: {{ item.specifications?.author ?? "-" }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>

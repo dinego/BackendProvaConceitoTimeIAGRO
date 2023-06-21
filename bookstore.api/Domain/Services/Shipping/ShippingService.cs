@@ -5,9 +5,9 @@ namespace Service.Services.Shipping
 {
     public class ShippingService : IShippingService
     {
-        public decimal CalculateShipping(decimal price, IShippingStrategy freteStrategy)
+        public decimal CalculateShipping(decimal price, IShippingStrategy shippingStrategy)
         {
-            return freteStrategy.CalculateShipping(price);
+            return shippingStrategy.CalculateShipping(price);
         }
     }
 }

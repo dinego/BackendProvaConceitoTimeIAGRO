@@ -18,6 +18,8 @@ using Service.Services.Book;
 using Service.Services.Shipping;
 using Service.Services.Shipping.Strategy;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System;
+using System.Security.Policy;
 
 namespace bookstore.api
 {
@@ -37,6 +39,14 @@ namespace bookstore.api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bookstore.API", Version = "v1" });
                 c.DocumentFilter<SwaggerSummaryDocumentFilter>();
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
 
             services.AddMvcCore()
@@ -72,6 +82,8 @@ namespace bookstore.api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Nome do Seu API V1");
                 c.DocExpansion(DocExpansion.List);
             });
+
+            app.UseCors("CorsPolicy");
 
             // Outras configurações de middleware...
 

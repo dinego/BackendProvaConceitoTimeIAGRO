@@ -22,7 +22,7 @@ namespace bookstore.api.Controllers
         /// Buscar todos os livros cadastrados
         /// </summary>
         [HttpGet]
-        public IEnumerable<BookResponseDTO> GetAllBooks()
+        public IEnumerable<BookResponseDTO> GetAll()
         {
             return _bookAppService.GetAll();
         }

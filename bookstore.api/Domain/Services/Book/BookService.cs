@@ -1,7 +1,6 @@
 ﻿using Common;
 using Domain.DTO.Requests;
 using Domain.DTO.Responses;
-using Domain.Entities;
 using Domain.Enum;
 using Infra.Interfaces;
 using Service.Interfaces;

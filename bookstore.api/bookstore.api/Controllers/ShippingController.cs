@@ -7,7 +7,7 @@ using Service.Services.Shipping.Strategy;
 
 namespace bookstore.api.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class ShippingController : ControllerBase
     {
         private readonly IShippingService _shippingService;
